@@ -30,6 +30,9 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag | default "latest" }}
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 8 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
