@@ -1,26 +1,16 @@
-FROM node:20-alpine AS builder
-
-# Install dependencies for static build (not needed for pure static, but for consistency)
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production &amp;&amp; npm cache clean --force
-
-# Copy static files
-COPY . .
-
-# Production build (empty for static)
-RUN npm run build || echo "No build step needed for static"
-
-# Production NGINX stage
+# Pure static NGINX - Vanilla HTML/JS/CSS AWS Exam POC
 FROM nginx:alpine-slim
 
-# Install bash for healthcheck
-RUN apk add --no-cache bash
+# Install wget & bash for healthcheck
+RUN apk add --no-cache wget bash
 
-# Copy static files to NGINX html dir
-COPY --from=builder /app /usr/share/nginx/html
+# Remove default nginx html
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy custom nginx.conf for better defaults
+# Copy static files
+COPY . /usr/share/nginx/html/
+
+# Copy custom nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port
@@ -28,7 +18,7 @@ EXPOSE 80
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost/ || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost/health || exit 1
 
 # Run NGINX
 CMD ["nginx", "-g", "daemon off;"]
