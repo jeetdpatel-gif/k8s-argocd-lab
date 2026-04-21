@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd  # or your namespace
+  labels:
+    name: argocd
+    # argocd.argoproj.io/managed-namespace: "true"  # for ArgoCD auto-sync
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Values.secrets.appSecretName }}
+  namespace: argocd
+  labels:
+    app: aws-exam-poc
+type: Opaque
+# data:
+#   APP_SECRET: {{ "supersecret123!@#" | b64enc | quote }}  # Base64 encoded
+# 
+# NOTE: In production, this Secret is managed by Harness → ExternalSecrets Operator or ArgoCD App of Apps
+# Harness SecretSet: poc-app-secret → Sync to K8s Secret.appSecretName=APP_SECRET

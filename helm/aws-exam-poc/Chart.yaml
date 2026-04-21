@@ -1,0 +1,18 @@
+apiVersion: v2
+name: aws-exam-poc
+description: AWS Exam Simulator POC - Harness to ArgoCD Secrets Demo
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - aws
+  - exam
+  - poc
+  - harness
+  - argocd
+maintainers:
+  - name: BLACKBOXAI
+    email: poc@example.com
+sources:
+  - https://github.com/yourorg/aws-exam-poc
+
