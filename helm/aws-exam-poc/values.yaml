@@ -8,9 +8,8 @@ image:
   pullPolicy: IfNotPresent
   tag: "k8s-argocd-lab-28"  # Use :latest for POC
 
-imagePullSecrets: [
-  name: aws-ecr-secret
-]
+imagePullSecrets:
+  - name: aws-ecr-secret
 
 nameOverride: ""
 fullnameOverride: ""
