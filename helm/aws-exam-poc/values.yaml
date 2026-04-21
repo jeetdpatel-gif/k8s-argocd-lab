@@ -8,8 +8,9 @@ image:
   pullPolicy: IfNotPresent
   tag: "k8s-argocd-lab-28"  # Use :latest for POC
 
-imagePullSecrets: []
-# - name: docker-registry-creds  # Harness secret for Docker Hub/ECR
+imagePullSecrets: [
+  name: aws-ecr-secret
+]
 
 nameOverride: ""
 fullnameOverride: ""
