@@ -4,9 +4,9 @@
 replicaCount: 1
 
 image:
-  repository: 729598251506.dkr.ecr.ap-south-1.amazonaws.com/k8s-argocd-lab:k8s-argocd-lab-28  # Change to yourusername/aws-exam-poc:latest
+  repository: 729598251506.dkr.ecr.ap-south-1.amazonaws.com/k8s-argocd-lab # Change to yourusername/aws-exam-poc:latest
   pullPolicy: IfNotPresent
-  # tag: "alpine"  # Use :latest for POC
+  tag: "k8s-argocd-lab-28"  # Use :latest for POC
 
 imagePullSecrets: []
 # - name: docker-registry-creds  # Harness secret for Docker Hub/ECR
