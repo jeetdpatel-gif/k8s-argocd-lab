@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Exam POC - Harness + ArgoCD Secrets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚀 AWS Exam Simulator POC</h1>
+      <p>Deployed via Harness Pipeline → ArgoCD GitOps</p>
+    </header>
+    
+    <section class="status">
+      <h2>✅ Deployment Status</h2>
+      <div class="status-grid">
+        <div class="status-card">
+          <span class="label">Build Time</span>
+          <span class="value" id="buildTime">Loading...</span>
+        </div>
+        <div class="status-card">
+          <span class="label">App Secret</span>
+          <span class="value secret" id="appSecret">Not loaded</span>
+        </div>
+        <div class="status-card">
+          <span class="label">Harness Env</span>
+          <span class="value" id="harnessEnv">Not loaded</span>
+        </div>
+        <div class="status-card">
+          <span class="label">Pod Name</span>
+          <span class="value" id="podName">Not in K8s</span>
+        </div>
+      </div>
+    </section>
+    
+    <section class="demo">
+      <h2>🔐 Secrets Management Test</h2>
+      <p><strong>APP_SECRET</strong> injected from Harness → ArgoCD Secret (masked for demo)</p>
+      <button id="toggleSecret" class="btn">Show Secret Preview</button>
+      <div id="secretPreview" class="secret-preview hidden">
+        Secret hash: <span id="secretHash"></span>
+      </div>
+    </section>
+    
+    <section class="countdown">
+      <h2>⏱️ Health Check</h2>
+      <div class="countdown-timer" id="countdown">Ready</div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
