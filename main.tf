@@ -16,9 +16,18 @@ terraform {
 }
 
 # 1. Variables required for Harness and Kubernetes
-variable "harness_account_id" { type = string }
-variable "harness_org_id" { type = string }
-variable "harness_project_id" { type = string }
+variable "harness_account_id" { 
+  type = string
+  default = "gLXLxjTmQhGmdJXhAORKag"
+}
+variable "harness_org_id" { 
+  type = string
+  default = "playground"
+}
+variable "harness_project_id" { 
+  type = string 
+  default = "jeet_playground"
+}
 variable "argocd_namespace" { 
   type    = string 
   default = "argocd" # Namespace where your existing ArgoCD lives
