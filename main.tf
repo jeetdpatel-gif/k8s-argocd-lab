@@ -14,6 +14,15 @@ terraform {
     }
   }
 }
+terraform {
+  backend "http" {
+    address = "https://app.harness.io/gateway/iacm/api/orgs/playground/projects/jeet_playground/workspaces/GitOps_Agent/terraform-backend?accountIdentifier=gLXLxjTmQhGmdJXhAORKag"
+    username = "harness"
+    lock_address = "https://app.harness.io/gateway/iacm/api/orgs/playground/projects/jeet_playground/workspaces/GitOps_Agent/terraform-backend/lock?accountIdentifier=gLXLxjTmQhGmdJXhAORKag"
+    lock_method = "POST"
+    unlock_address = "https://app.harness.io/gateway/iacm/api/orgs/playground/projects/jeet_playground/workspaces/GitOps_Agent/terraform-backend/lock?accountIdentifier=gLXLxjTmQhGmdJXhAORKag"
+    unlock_method = "DELETE"
+  }
 
 # 1. Variables required for Harness and Kubernetes
 variable "harness_account_id" { 
