@@ -14,6 +14,3 @@ terraform {
     }
   }
 }
-terraform {
-  backend "http" {}
-}
