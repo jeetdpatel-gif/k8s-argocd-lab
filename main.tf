@@ -31,10 +31,6 @@ variable "argocd_namespace" {
   type    = string 
   default = "argocd" # Namespace where your existing ArgoCD lives
 }
-variable "TF_HTTP_PASSWORD" { 
-  type    = string 
-  default = pat.gLXLxjTmQhGmdJXhAORKag.69e8d86470b33f0f9bcc0515.Z5hcdzmjsUAhCIiPR7MT" # Namespace where your existing ArgoCD lives
-}
 
 # 2. Logically create the GitOps Agent in Harness
 resource "harness_platform_gitops_agent" "byoa_agent" {
